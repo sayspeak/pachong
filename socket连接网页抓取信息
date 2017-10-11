@@ -1,0 +1,12 @@
+import socket
+mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysocket.connect(('www.iqilu.com',80))
+
+mysocket.send(b'GET http://news.iqilu.com/shandong/yaowen/2017/1011/3709104.shtml HTTP/1.0\n\n')
+
+while True:
+    data = mysocket.recv(1024)
+    if (len(data) < 1):
+        break
+    print(data)
+mysocket.close
